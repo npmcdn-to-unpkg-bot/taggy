@@ -1,0 +1,5 @@
+[client]
+database = taggy
+user = taggy
+password = taggy
+default-character-set = utf8
