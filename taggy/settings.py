@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'vault',
+    'taggy.apps.resource_types.vault',
+    'taggy.apps.resource_types.pages',
+    'taggy.apps.tagging',
+    'taggy.apps.access'
 ]
 
 MIDDLEWARE_CLASSES = [
