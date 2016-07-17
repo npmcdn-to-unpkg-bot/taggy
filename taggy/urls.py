@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
+
+
+admin.site.site_header = ugettext_lazy('Taggy admin')
+admin.site.site_title = ugettext_lazy('Taggy administration')
