@@ -16,3 +16,9 @@ class Tag(models.Model):
     description = models.TextField(blank=True)
     category = models.ForeignKey(Category)
     team = models.ForeignKey(Team)
+
+
+class Taggable(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    tags = models.ManyToManyField(Tag)
