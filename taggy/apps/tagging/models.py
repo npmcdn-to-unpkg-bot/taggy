@@ -22,3 +22,7 @@ class Taggable(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     tags = models.ManyToManyField(Tag)
+    team = models.ForeignKey(Team)
+
+    def __str__(self):
+        return self.name
