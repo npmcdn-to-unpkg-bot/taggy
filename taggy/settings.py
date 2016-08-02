@@ -37,6 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'stronghold',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
+
     'taggy',
     'taggy.apps.resource_types.vault',
     'taggy.apps.resource_types.pages',
@@ -53,6 +63,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'stronghold.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'taggy.urls'
@@ -115,6 +127,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
@@ -141,3 +161,18 @@ STATICFILES_DIRS = (
 STATIC_ROOT = "/var/www/taggy/static/"
 
 STATIC_URL = '/static/'
+
+
+# Stronghold settings
+# STRONGHOLD_DEFAULTS = True
+STRONGHOLD_PUBLIC_URLS = (
+    r'^%s.+$' % STATIC_URL,
+#    r'^%s.+$' % MEDIA_URL,
+    r'^/accounts/.*',
+    r'^/admin/.*',
+)
+
+# allauth settings
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
