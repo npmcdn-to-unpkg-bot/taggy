@@ -21,3 +21,31 @@ The private key will stay unencrypted in your local machine's memory for a confi
 - It is not possible to reset this password if you forget it (we can't recover your private key without it)
 - Secrets shared with other users can be made available again after generating a new private-public key pair, but requires the intervention of another user
 - Encrypted data is not indexed for the search function, as such, it's not possible to use search for the content of encrypted data
+
+## Requirements
+**Taggy** is a Python 2.7 web-application, while it might work with Python 2.6 this is untested and unsupported. The same is valid for python 3.x.
+
+Any required Python libraries will be installed with the installation of **Taggy**.
+
+For storage of data **Taggy** depends on a MySql server, either on the same host or on a different system. 
+While other database systems could be used, they are not supported. 
+And libraries to communicate with the database will need to be installed manually, as they will not be installed by following the installation guide.
+
+## Installation
+Start with checking out the code from the git repository.
+
+We recommend running in a virtual environment. If you have never used it look at the [installation and user guide](https://virtualenv.pypa.io/en/stable/).
+
+To install a library, activate the virtual environment (if used) and then run the given commands.
+
+Install the OS dependant libraries:
+
+#### Windows
+Move to the setup/windows directory
+
+- `pip install MySQL_python-1.2.5-cp27-none-win32.whl`
+
+#### All platforms
+After the installation of the OS dependant libraries, if any, continue with installing the rest of the required python libraries.
+
+`pip install -r requirements.txt`
