@@ -16,11 +16,12 @@ Upon loading of the **Taggy** application, your encrypted private key is downloa
 
 The private key will stay unencrypted in your local machine's memory for a configurable amount of time, or until you manually lock it again.
 
-- The private key is never unencrypted on the server
-- The password you use to encrypt your private key is never sent to the server
-- It is not possible to reset this password if you forget it (we can't recover your private key without it)
-- Secrets shared with other users can be made available again after generating a new private-public key pair, but requires the intervention of another user
-- Encrypted data is not indexed for the search function, as such, it's not possible to use search for the content of encrypted data
+- The private key is never unencrypted on the server.
+- Your secrets are never sent to the server in clear text, nor are they ever unencrypted on the server.
+- The password you use to encrypt your private key is never sent to the server.
+- It is not possible to reset this password if you forget it (we can't recover your private key without it).
+- Secrets shared with other users can be made available again after generating a new private-public key pair, but requires the intervention of another user.
+- Encrypted data is not indexed for the search function, as such, it's not possible to use search for the content of encrypted data.
 
 ## Requirements
 **Taggy** is a Python 2.7 web-application, while it might work with Python 2.6 this is untested and unsupported. The same is valid for python 3.x.
