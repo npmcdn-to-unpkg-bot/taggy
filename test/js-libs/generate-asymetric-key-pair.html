@@ -1,0 +1,70 @@
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../taggy/static/libs/jsencrypt.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <span id="time-report"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <label for="privkey">Private Key</label><br/>
+            <small>
+                <textarea id="privkey" rows="15" style="width:100%"></textarea>
+            </small>
+        </div>
+        <div class="col-lg-6">
+            <label for="pubkey">Public Key</label><br/>
+            <small><textarea id="pubkey" rows="15" style="width:100%" readonly="readonly"></textarea></small>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+
+
+        var generateKeys = function () {
+            var sKeySize = '4096';  // $('#key-size').attr('data-value');
+            var keySize = parseInt(sKeySize);
+            var crypt = new JSEncrypt({default_key_size: keySize});
+            var async = true;  // $('#async-ck').is(':checked');
+            var dt = new Date();
+            var time = -(dt.getTime());
+            if (async) {
+                $('#time-report').text('.');
+                var load = setInterval(function () {
+                    var text = $('#time-report').text();
+                    $('#time-report').text(text + '.');
+                }, 500);
+                crypt.getKey(function () {
+                    clearInterval(load);
+                    dt = new Date();
+                    time += (dt.getTime());
+                    $('#time-report').text('Generated in ' + time + ' ms');
+                    $('#privkey').val(crypt.getPrivateKey());
+                    $('#pubkey').val(crypt.getPublicKey());
+                });
+            } else {
+                crypt.getKey();
+                dt = new Date();
+                time += (dt.getTime());
+                $('#time-report').text('Generated in ' + time + ' ms');
+                $('#privkey').val(crypt.getPrivateKey());
+                $('#pubkey').val(crypt.getPublicKey());
+            }
+        };
+
+        generateKeys();
+    });
+</script>
+</body>
+</html>
