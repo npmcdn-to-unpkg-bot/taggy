@@ -25,8 +25,8 @@ class Member(models.Model):
     user = models.OneToOneField(User)
     public_key = models.TextField()
     private_key = models.TextField()
-    teams = models.ManyToManyField(Team, through=TeamMember)
-    groups = models.ManyToManyField(Group, through=GroupMember)
+    teams = models.ManyToManyField(Team, through='TeamMember')
+    groups = models.ManyToManyField(Group, through='GroupMember')
 
 
 class TeamMember(models.Model):
