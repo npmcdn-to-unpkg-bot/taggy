@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'taggy.apps.resource_types.vault',
     'taggy.apps.resource_types.pages',
     'taggy.apps.tagging',
-    'taggy.apps.access'
+    'taggy.apps.members'
 ]
 
 MIDDLEWARE_CLASSES = [
