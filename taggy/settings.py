@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+USE_CDN = True
+
 
 # Application definition
 
@@ -80,6 +82,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'django_settings_export.settings_export',
             ],
         },
     },
@@ -140,13 +144,9 @@ AUTHENTICATION_BACKENDS = (
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -166,7 +166,7 @@ STATIC_URL = '/static/'
 # Stronghold settings
 # STRONGHOLD_DEFAULTS = True
 STRONGHOLD_PUBLIC_URLS = (
-    r'^%s.+$' % STATIC_URL,
+    r'^%s.*$' % STATIC_URL,
 #    r'^%s.+$' % MEDIA_URL,
     r'^/accounts/.*',
     r'^/admin/.*',
@@ -176,3 +176,8 @@ STRONGHOLD_PUBLIC_URLS = (
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
+
+# Export settings to use in templates
+SETTINGS_EXPORT = [
+    'USE_CDN',
+]

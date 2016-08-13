@@ -19,19 +19,7 @@ from django.utils.translation import ugettext_lazy
 
 import views
 
-app_name = 'taggy'
+app_name = 'members'
 urlpatterns = [
-    # Plugins
-    url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('allauth.urls')),
-
-    # Index
-    url(r'^$', views.index, name='index'),
-
-    # Apps
-    url(r'^members/', include('taggy.apps.members.urls')),
+    url(r'^new-member.html$', views.new_member, name='new-member'),
 ]
-
-
-admin.site.site_header = ugettext_lazy('Taggy admin')
-admin.site.site_title = ugettext_lazy('Taggy administration')
