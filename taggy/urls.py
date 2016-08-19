@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
 
     # Apps
-    url(r'^members/', include('taggy.apps.members.urls')),
+    url(r'^members/', include('members.urls')),
 ]
 
 

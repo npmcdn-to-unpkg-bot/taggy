@@ -50,10 +50,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     'taggy',
-    'taggy.apps.resource_types.vault',
-    'taggy.apps.resource_types.pages',
-    'taggy.apps.tagging',
-    'taggy.apps.members'
+    'resource_types.vault',
+    'resource_types.pages',
+    'tagging',
+    'members'
 ]
 
 MIDDLEWARE_CLASSES = [

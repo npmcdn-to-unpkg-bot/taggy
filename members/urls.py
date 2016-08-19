@@ -22,4 +22,5 @@ import views
 app_name = 'members'
 urlpatterns = [
     url(r'^new-member.html$', views.new_member, name='new-member'),
+    url(r'^save-keypair.do$', views.save_keypair, name='save-keypair'),
 ]

@@ -1,0 +1,55 @@
+{% extends 'taggy-base.html' %}
+{% load static %}
+
+{% block head %}
+    <script type="text/javascript" src="{% static "libs/encryption/jsencrypt.js" %}"></script>
+    <script type="text/javascript" src="{% static "libs/encryption/triplesec-3.0.14-min.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Taggy, new Member</h1>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <p>A major part of Taggy is about secure data sharing. To be able to use Taggy you will first need to
+                    generate an encryption key pair</p>
+                <p>Depending on your processor speed, this might take a while. (On a performant machine up to 2 minutes,
+                    on mobile devices or lower spec computers even more.)</p>
+                <p>Due to the nature of the generation, no progress percentage can be given.</p>
+
+            </div>
+            <div class="col-lg-6 col-sm-12">
+
+                <div id="generate-container" class="hidden">
+                    <button id="generate-keypair">Generate</button>
+                    <p class="progress-indicator"></p>
+                </div>
+
+                <div id="encrypt-container" class="hidden">
+                    <form id="private-key-password-form">
+                        <input type="password" name="private-key-password" id="encrypt-password">
+                        <input type="password" name="private-key-password-confirm" id="encrypt-password-confirm">
+                        <input type="submit" value="Encrypt keypair"/>
+                    </form>
+                </div>
+
+                <form action="{% url 'members:save-keypair' %}" id="upload-form" class="hidden">
+                    {% csrf_token %}
+
+                    <input type="hidden" name="public-key" id="public-key"/>
+                    <input type="hidden" name="private-key" id="private-key"/>
+                </form>
+
+                <div id="uploaded-container" class="hidden">
+                    <p>Done, <a href="{% url 'index' %}" >continue</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static "js/generate-keypair.js" %}"></script>
+
+{% endblock %}

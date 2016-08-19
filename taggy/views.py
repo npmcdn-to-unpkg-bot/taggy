@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from taggy.apps.members.models import Member
+from members.models import Member
 
 
 # Create your views here.

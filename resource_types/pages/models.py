@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from taggy.apps.members.models import Team
-from taggy.apps.tagging.models import Taggable
+from members.models import Team
+from tagging.models import Taggable
 
 
 # Create your models here.

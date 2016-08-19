@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from taggy.apps.members.models import MemberRole
+from members.models import MemberRole
 
 
 class MemberRoleAdmin(admin.ModelAdmin):
