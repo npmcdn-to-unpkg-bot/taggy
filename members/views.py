@@ -27,3 +27,16 @@ def save_keypair(request):
         member.save()
 
     return JsonResponse({'foo': 'bar'})
+
+
+def get_teams(request):
+    team_memberships = request.user.member.teammember_set.all()
+    teams = []
+    for membership in team_memberships:
+        team = membership.team
+        teams.append({
+            'id': team.id,
+            'code': team.code,
+            'name': team.name
+        })
+    return JsonResponse(teams, safe=False)
